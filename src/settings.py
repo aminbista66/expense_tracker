@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -169,7 +170,6 @@ SPECTACULAR_SETTINGS = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-
 CORS_ALLOW_HEADERS = [
     "accept",
     "accept-encoding",
@@ -182,9 +182,6 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
-
-
-CORS_ALLOWED_ORIGINS = ["http://localhost:8000", "http://localhost:3000"]
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "http://localhost:3000"]
 

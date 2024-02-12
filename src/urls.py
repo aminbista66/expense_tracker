@@ -5,6 +5,16 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
     SpectacularRedocView,
 )
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+class Ping(APIView):
+    permission_classes = []
+    authentication_classes = []
+    
+    def get(self, request):
+        return Response("pong")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -17,5 +27,6 @@ urlpatterns = [
     ),
     path('auth/', include('src.apps.auth.urls')),
     path('category/', include('src.apps.category.urls')),
-    path('expense/', include('src.apps.expense.urls'))
+    path('expense/', include('src.apps.expense.urls')),
+    path('ping/', Ping.as_view())
 ]

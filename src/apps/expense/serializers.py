@@ -15,7 +15,7 @@ class ExpenseCreateUpdateSerializer(serializers.ModelSerializer):
         exclude = ['created_by']
 
     def create(self, validated_data):
-        category_datas = validated_data.pop('category', [])
+        category_datas = validated_data.pop('categories', [])
         expense = Expense.objects.create(
             created_by=self.context['request'].user,
             **validated_data

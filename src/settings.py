@@ -159,8 +159,8 @@ DRF_STANDARDIZED_ERRORS = {"ENABLE_IN_DEBUG_FOR_UNHANDLED_EXCEPTIONS": True}
 # The `SPECTACULAR_SETTINGS` dictionary is used to configure the settings for the Django Spectacular
 # package, which is used for generating OpenAPI schemas for Django REST Framework APIs.
 SPECTACULAR_SETTINGS = {
-    "TITLE": "SMS Backend",
-    "DESCRIPTION": "API for SMS service",
+    "TITLE": "Expense Tracker Backend",
+    "DESCRIPTION": "API for expense tracking service",
     "VERSION": "1.0.0",
     "SCHEMA_PATH_PREFIX": r"/api/v[0-9]",
 }

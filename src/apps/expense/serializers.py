@@ -12,7 +12,7 @@ class ExpenseSerializer(serializers.ModelSerializer):
 class ExpenseCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expense
-        fields = "__all__"
+        exclude = ['created_by']
 
     def create(self, validated_data):
         category_datas = validated_data.pop('category', [])

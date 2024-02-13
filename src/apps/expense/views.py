@@ -81,7 +81,7 @@ class ExpenseByCategoryReport(generics.GenericAPIView):
         if not end_date:
             end_date = expenses.first().created_at if expenses.exists() else timezone.now()  # type: ignore
 
-        expenses.values('category__name').annotate(
+        expenses.values('categories__name').annotate(
             total_amount=models.Sum('amount')
         ).order_by('-total_amount')
         return Response(expenses)

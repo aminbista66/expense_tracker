@@ -24,3 +24,8 @@ class ExpenseCreateUpdateSerializer(serializers.ModelSerializer):
         for category in category_datas:
             expense.categories.add(category)
         return expense
+    
+class ExpenseReportSerializer(serializers.Serializer):
+    category_name = serializers.CharField()
+    total_amount = serializers.DecimalField(max_digits=10, decimal_places=2)
+    

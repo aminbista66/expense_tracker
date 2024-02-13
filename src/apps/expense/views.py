@@ -1,7 +1,7 @@
 from .models import Expense
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
-from .serializers import ExpenseSerializer, ExpenseCreateUpdateSerializer
+from .serializers import ExpenseSerializer, ExpenseCreateUpdateSerializer, ExpenseReportSerializer
 from django.db import models
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema, OpenApiParameter
@@ -81,7 +81,10 @@ class ExpenseByCategoryReport(generics.GenericAPIView):
         if not end_date:
             end_date = expenses.first().created_at if expenses.exists() else timezone.now()  # type: ignore
 
-        expenses.values('categories__name').annotate(
+        expenses = expenses.values('categories__name').annotate(
             total_amount=models.Sum('amount')
         ).order_by('-total_amount')
+
+        
+        # serializer = ExpenseReportSerializer()
         return Response(expenses)

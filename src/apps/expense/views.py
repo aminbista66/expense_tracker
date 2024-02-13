@@ -85,6 +85,9 @@ class ExpenseByCategoryReport(generics.GenericAPIView):
             total_amount=models.Sum('amount')
         ).order_by('-total_amount')
 
+        for expense in expenses:
+            expense['total_user_expense'] = self.request.user.total_expense() # type: ignore
+
         
         # serializer = ExpenseReportSerializer()
         return Response(expenses)
